@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso maior case — Starbridge</title>
+<link rel="icon" href="logo-starbridge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary: #3d5a6b;
+    --accent: #5cb69f;
+    --accent-deep: #47a189;
+    --text-dark: #2c3e50;
+    --text-mid: #5a6c7d;
+    --bg-light: #f8fafb;
+    --bg-soft: #f1f5f7;
+    --white: #ffffff;
+
+    --font-title: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --radius-sm: 8px;
+    --radius: 10px;
+    --radius-lg: 14px;
+
+    --shadow-sm: 0 1px 8px rgba(44,62,80,.06);
+    --shadow: 0 2px 16px rgba(44,62,80,.08);
+    --shadow-md: 0 4px 28px rgba(44,62,80,.11);
+
+    --ease: cubic-bezier(.4,0,.2,1);
+    --t: .28s var(--ease);
+    --nav-h: 60px;
+  }
+  *,*::before,*::after{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-padding-top:var(--nav-h);}
+  body{
+    font-family:var(--font-body);
+    color:var(--text-dark);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block; max-width:100%;}
+  ::selection{background:rgba(92,182,159,.18); color:var(--text-dark);}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 44px;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(61,90,107,.08);
+  }
+  .nav-logo img{height:22px;}
+  .nav-links{display:flex; gap:2px; list-style:none; align-items:center;}
+  .nav-links a{
+    font-size:12.5px; font-weight:500; color:var(--text-mid); text-decoration:none;
+    padding:6px 12px; border-radius:6px; transition:color var(--t), background var(--t);
+    letter-spacing:.01em;
+  }
+  .nav-links a:hover{color:var(--primary); background:rgba(61,90,107,.07);}
+
+  section{padding:88px 0; position:relative;}
+  .container{max-width:1060px; margin:0 auto; padding:0 44px;}
+
+  h1,h2,h3,h4{font-family:var(--font-title); letter-spacing:-.02em; color:var(--text-dark);}
+
+  .eyebrow-rule{width:26px; height:2px; background:var(--accent); border-radius:1px; margin-bottom:22px;}
+  .label{
+    font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:12px;
+  }
+
+  /* HERO */
+  #home{
+    min-height:92vh; display:flex; align-items:center;
+    background:linear-gradient(180deg, var(--white) 0%, var(--bg-light) 100%);
+    padding:calc(var(--nav-h) + 60px) 0 60px;
+  }
+  .hero-wrap{
+    display:flex; align-items:center; justify-content:flex-start; gap:56px;
+  }
+  .hero-body{max-width:680px;}
+  #home h1{
+    font-size:clamp(38px, 5.2vw, 58px); font-weight:700; line-height:1.14;
+    letter-spacing:-.03em; margin-bottom:24px;
+  }
+  .hero-sub{font-size:18px; color:var(--text-mid); line-height:1.7; margin-bottom:0; max-width:520px;}
+
+  /* PROJECT SECTION */
+  #projeto{background:var(--white);}
+  .sec-head{margin-bottom:48px; max-width:680px;}
+  .sec-head h2{font-size:30px; font-weight:700; line-height:1.22;}
+
+  .stat-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(61,90,107,.10);
+    border-radius:var(--radius-lg); overflow:hidden; margin-bottom:44px; box-shadow:var(--shadow-sm);
+  }
+  .stat-cell{background:var(--white); padding:26px 20px;}
+  .stat-num{font-family:var(--font-title); font-size:32px; font-weight:700; color:var(--primary); letter-spacing:-.03em;}
+  .stat-num span{color:var(--accent); font-size:18px;}
+  .stat-label{font-size:12.5px; color:var(--text-mid); margin-top:8px; line-height:1.45;}
+
+  .before-after{display:grid; grid-template-columns:1fr auto 1fr; gap:0; align-items:center; margin-bottom:20px;}
+  .ba-col{background:var(--bg-light); border-radius:var(--radius-lg); padding:28px 30px; border:1px solid rgba(61,90,107,.08);}
+  .ba-col.after{background:var(--primary); border-color:var(--primary);}
+  .ba-tag{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:600; margin-bottom:14px; color:var(--text-mid);}
+  .ba-col.after .ba-tag{color:var(--accent);}
+  .ba-col ul{list-style:none;}
+  .ba-col li{font-size:13.5px; line-height:1.7; padding-left:20px; position:relative; color:var(--text-mid);}
+  .ba-col.after li{color:rgba(255,255,255,.88);}
+  .ba-col li svg{position:absolute; left:0; top:5px; width:13px; height:13px; stroke:var(--text-mid);}
+  .ba-col.after li svg{stroke:var(--accent);}
+  .ba-arrow{
+    width:40px; height:40px; border-radius:50%; background:var(--accent); color:var(--white);
+    display:flex; align-items:center; justify-content:center; margin:0 -20px; z-index:2;
+    box-shadow:0 4px 14px rgba(92,182,159,.35);
+  }
+  .ba-arrow svg{width:16px; height:16px; stroke:white;}
+
+  /* PRODUCT VISUAL BLOCK */
+  .product-block{
+    margin-top:44px; background:#0f1c26; border-radius:var(--radius-lg);
+    padding:40px 44px; display:flex; align-items:center; gap:40px; overflow:hidden;
+    position:relative; box-shadow:var(--shadow-md);
+  }
+  .product-block::before{
+    content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px;
+    background:radial-gradient(circle, rgba(92,182,159,.25) 0%, transparent 70%);
+  }
+  .product-block-text{max-width:280px; position:relative; z-index:1; flex-shrink:0;}
+  .product-block-text .label{color:var(--accent);}
+  .product-block-text h3{color:var(--white); font-size:19px; margin-bottom:10px; line-height:1.3;}
+  .product-block-text p{color:rgba(255,255,255,.6); font-size:13.5px; line-height:1.65;}
+  .product-block-img{
+    flex:1; border-radius:10px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,.35);
+    position:relative; z-index:1;
+  }
+  .product-block-img img{width:100%; display:block;}
+
+  .capability-row{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:44px;}
+  .cap-card{
+    border:1px solid rgba(61,90,107,.08); border-radius:var(--radius); padding:22px;
+    background:var(--white); box-shadow:var(--shadow-sm); transition:box-shadow var(--t), transform var(--t);
+  }
+  .cap-card:hover{box-shadow:var(--shadow-md); transform:translateY(-2px);}
+  .cap-icon{
+    width:32px; height:32px; border-radius:8px; background:rgba(92,182,159,.1);
+    display:flex; align-items:center; justify-content:center; margin-bottom:12px;
+  }
+  .cap-icon svg{width:15px; height:15px; stroke:var(--accent);}
+  .cap-card h4{font-size:14.5px; margin-bottom:6px;}
+  .cap-card p{font-size:12.5px; color:var(--text-mid); line-height:1.6;}
+
+  /* OUTRAS APLICAÇÕES */
+  #projetos{background:var(--bg-light);}
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .proj-card{
+    background:var(--white); border-radius:var(--radius-lg); padding:28px; border:1px solid rgba(61,90,107,.08);
+    box-shadow:var(--shadow-sm); transition:box-shadow var(--t), transform var(--t);
+  }
+  .proj-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:rgba(92,182,159,.28);}
+  .proj-icon{
+    width:36px; height:36px; border-radius:9px; background:rgba(92,182,159,.1);
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+  }
+  .proj-icon svg{width:17px; height:17px; stroke:var(--accent);}
+  .proj-sector{font-size:10.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--text-mid); font-weight:600; margin-bottom:8px;}
+  .proj-card h3{font-size:17px; margin-bottom:9px; line-height:1.3;}
+  .proj-card p{font-size:13.5px; color:var(--text-mid); line-height:1.65;}
+
+  /* FUNDADORES */
+  #fundadores{background:var(--white);}
+  .founders-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  .founder-card{display:flex; gap:20px; align-items:flex-start;}
+  .founder-photo{
+    width:88px; height:88px; border-radius:50%; object-fit:cover; flex-shrink:0;
+    border:3px solid var(--bg-light); box-shadow:var(--shadow);
+  }
+  .founder-role{font-size:10.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--accent); font-weight:600; margin-bottom:4px;}
+  .founder-name{font-size:17px; margin-bottom:8px;}
+  .founder-bio{font-size:13px; color:var(--text-mid); line-height:1.62;}
+
+  /* CONTATO */
+  #contato{background:var(--primary); padding:100px 0;}
+  .thanks{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; text-align:center;}
+  .thanks h2{color:var(--white); font-size:36px; font-weight:700;}
+  .thanks img{height:24px; filter:brightness(0) invert(1);}
+
+  @media (max-width:900px){
+    nav{padding:0 20px;} .nav-links{display:none;}
+    .container{padding:0 20px;}
+    .hero-wrap{flex-direction:column; align-items:flex-start;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .before-after{grid-template-columns:1fr; gap:14px;}
+    .ba-arrow{margin:0 auto; transform:rotate(90deg);}
+    .capability-row{grid-template-columns:1fr;}
+    .product-block{flex-direction:column; padding:28px;}
+    .product-block-text{max-width:none;}
+    .proj-grid{grid-template-columns:1fr;}
+    .founders-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="logo-starbridge.png" alt="Starbridge"></div>
+  <ul class="nav-links">
+    <li><a href="#home">Início</a></li>
+    <li><a href="#projeto">O projeto</a></li>
+    <li><a href="#projetos">Outras aplicações</a></li>
+    <li><a href="#fundadores">Fundadores</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="container">
+    <div class="hero-wrap">
+      <div class="hero-body">
+        <div class="eyebrow-rule"></div>
+        <h1>Nosso maior case começou numa conversa como esta.</h1>
+        <p class="hero-sub">OPY Health, investida do BTG Pactual — do diagnóstico à plataforma em produção, em 12 semanas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O PROJETO -->
+<section id="projeto">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">Nutrição hospitalar</div>
+      <h2>Hospital Delphina Aziz, Manaus</h2>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-num">12<span>sem.</span></div>
+        <div class="stat-label">do levantamento à operação em produção</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">4→1</div>
+        <div class="stat-label">sistemas centralizados em uma plataforma</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5.000<span>/dia</span></div>
+        <div class="stat-label">refeições rastreadas ponta a ponta</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5<span>anos</span></div>
+        <div class="stat-label">de histórico para auditoria, conforme ANS</div>
+      </div>
+    </div>
+
+    <div class="before-after">
+      <div class="ba-col before">
+        <div class="ba-tag">Antes</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Papel, planilhas e sistema terceirizado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Desvios só apareciam em relatórios, dias depois</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Sem visão única entre hospitais</li>
+        </ul>
+      </div>
+      <div class="ba-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <div class="ba-col after">
+        <div class="ba-tag">Depois</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Registro em campo pelo celular</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dashboard: temperatura, volume entregue, desperdício</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alertas automáticos por WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="product-block">
+      <div class="product-block-text">
+        <div class="label">Entregue e em funcionamento</div>
+        <h3>Toda a operação de nutrição, em uma única plataforma.</h3>
+        <p>Temperatura de câmaras e equipamentos, volume de refeições entregues e desperdício — monitorados em tempo real, com alertas automáticos antes de virar um problema de segurança alimentar.</p>
+      </div>
+      <div class="product-block-img"><img src="dashboard-temperatura.jpg" alt="Monitor de temperatura OPY Health"></div>
+    </div>
+
+    <div class="capability-row">
+      <div class="cap-card">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg></div>
+        <h4>Propriedade do sistema</h4>
+        <p>Código e dados são da OPY Health.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h4>Custo mínimo</h4>
+        <p>~R$1.500/mês de infraestrutura própria.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h4>Pronto para escalar</h4>
+        <p>Mesmo painel, outros hospitais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTRAS APLICAÇÕES -->
+<section id="projetos">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">Outras aplicações</div>
+      <h2>Alguns cases do nosso portfólio.</h2>
+    </div>
+
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
+        <div class="proj-sector">Varejo</div>
+        <h3>Atendimento com IA para e-commerce</h3>
+        <p>Agente integrado ao catálogo, com helpdesk unificado em WhatsApp, e-mail e site.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="proj-sector">Gestão</div>
+        <h3>ERP operável por IA no WhatsApp</h3>
+        <p>Cadastros, vendas, agendamentos e emissão de nota fiscal direto na conversa.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="proj-sector">Financeiro</div>
+        <h3>Extração de notas fiscais em escala</h3>
+        <p>Leitura automática de NFs em múltiplos formatos, com validação em código.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="proj-sector">Financeiro</div>
+        <h3>Agente sobre a base financeira</h3>
+        <p>Perguntas sobre vendas, custos e ticket médio, respondidas no WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDADORES -->
+<section id="fundadores">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">Quem conduz</div>
+      <h2>Sócios-fundadores</h2>
+    </div>
+    <div class="founders-grid">
+      <div class="founder-card">
+        <img class="founder-photo" src="pedro.jpg" alt="Pedro Zawislak">
+        <div>
+          <div class="founder-role">CEO & Co-founder</div>
+          <div class="founder-name">Pedro Zawislak</div>
+          <p class="founder-bio">Liderou a implementação de IA na Cloud Humans, à frente de 200+ automações para Shopee, Insider, Nuvemshop e Conta Simples. Fundou a Treve, marketplace de eventos adquirido pela Airbuzz, e atuou como consultor na EloGroup (iFood, Novo Nordisk).</p>
+        </div>
+      </div>
+      <div class="founder-card">
+        <img class="founder-photo" src="afonso.jpg" alt="Afonso Acauan">
+        <div>
+          <div class="founder-role">Co-founder</div>
+          <div class="founder-name">Afonso Acauan</div>
+          <p class="founder-bio">Construiu carreira em estratégia e crescimento, ajudando a escalar uma empresa de tecnologia de R$20M a R$70M em receita. Hoje lidera vendas enterprise e é especialista em segurança de software.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="container">
+    <div class="thanks">
+      <h2>Obrigado.</h2>
+      <img src="logo-starbridge.png" alt="Starbridge">
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
